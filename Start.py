@@ -4,11 +4,15 @@ import xml.dom.minidom
 import time
 import glob
 import os
-from OSMPythonTools.overpass import overpassQueryBuilder
-from OSMPythonTools.overpass import Overpass
+import OSMPythonToolsHandler as OSM
+import AssociateNodesAndWays as ANW
+import copy
+
 
 class Node():
-
+    ###############################
+    #Get rif of unused variables
+    ###############################
     longitude = ""
     latitude = ""
     id = ""
@@ -85,7 +89,9 @@ def AssignRowToObject(row):
     nodeObj = Node()
     nodeObj.longitude = (row[0])
     nodeObj.latitude = (row[1])
-    nodeObj.data['addr:housenumber'] = (row[2])
+    nodeObj.number = row[2]
+    nodeObj.street = row[3]
+    nodeObj.data['addr:housenumber'] = str(row[2])
     nodeObj.data['addr:street'] = (row[3])
     nodeObj.data['addr:unit'] = row[4]
     nodeObj.data['addr:city'] = row[5]
@@ -97,29 +103,19 @@ def AssignRowToObject(row):
     return nodeObj
 
 
-def GetWaysData(box):
-    overpass = Overpass()
-    query = overpassQueryBuilder(bbox=[box.latMin,box.lonMin,box.latMax,box.lonMax], elementType='way', out='body')
-    ways = overpass.query(query, timeout=60)
-    if ways._json['elements'] == []:
-        box.lonMin-=0.5
-        box.latMin-=0.5
-        box.lonMax+=0.5
-        box.latMax+=0.5
-        GetWaysData(box)
-    else:
-        return (ways._json['elements'])
+
 
 
 def Main():
     nodes=[]
-    path="S:/Course work/Spring 19/Garmin/openaddr-collected-north_america-sa/jm"
-    #path="S:/Course work/Spring 19/Garmin/openaddr-collected-us_midwest/us/mi"
+    #path="S:/Course work/Spring 19/Garmin/openaddr-collected-north_america-sa/jm"
+    path="S:/data/"
     for path in glob.glob(os.path.join(path, '*.csv')):
         nodes=GenerateXmlFromCsv(path)
 
-    ways = GetWaysData(nodes[-1])
-    print (ways)
+    ways = OSM.GetWaysData(nodes[-1])
+    del nodes[-1]
+    ANW.Associate(nodes, ways)
 
 
 if __name__== "__main__":
