@@ -6,12 +6,11 @@ import glob
 import os
 import OSMPythonToolsHandler as OSM
 import AssociateNodesAndWays as ANW
-import copy
-
+import DB_eOSMGenerator as DB
 
 class Node():
     ###############################
-    #Get rif of unused variables
+    #Get rid of unused variables
     ###############################
     longitude = ""
     latitude = ""
@@ -52,15 +51,13 @@ def ResetBox(box, lon, lat):
         box.lonMax=lon
 
 
-def GenerateXmlFromCsv(path):
+def GetNodesFromCsv(path):
     global xml
     nodes = []
     box = Coordinates()
     with open(path, 'rt') as csvfile:
-        fn = GetFilenameFromPath(path)
         csvData = csv.reader(csvfile)
         next(csvData, None)  # Skips headers
-        #root = ET.Element("root")
 
         for row in csvData:
             nodeObj = AssignRowToObject(row)
@@ -102,20 +99,20 @@ def AssignRowToObject(row):
     nodeObj.hash = row[10]
     return nodeObj
 
-
-
-
-
 def Main():
+    DB.CreateDBConnection()
     nodes=[]
     #path="S:/Course work/Spring 19/Garmin/openaddr-collected-north_america-sa/jm"
     path="S:/data/"
     for path in glob.glob(os.path.join(path, '*.csv')):
-        nodes=GenerateXmlFromCsv(path)
+        '''Gets nodes data from Open Address'''
+        nodes=GetNodesFromCsv(path)
 
-    ways = OSM.GetWaysData(nodes[-1])
+    '''Gets ways data from OSM based on Lat/Lon values from nodes'''
+    OSM.GetWaysData(nodes[-1])
     del nodes[-1]
-    ANW.Associate(nodes, ways)
+    '''Compare ways and nodes data and associate nodes with ways'''
+    ANW.Associate(nodes)
 
 
 if __name__== "__main__":

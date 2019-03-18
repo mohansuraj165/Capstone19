@@ -1,19 +1,14 @@
-def ParseWaysData(ways):
-    wayIDs = dict()
-    for w in ways:
-        if w['type'] == "way" and 'tags' in w:
-            tags = w['tags']
-            if 'name' in tags:
-                wayIDs[tags.get('name')] = w.get('id')
-                #########################
-                #store final values in DB
-                #########################
-    return (wayIDs)
+import DB_eOSMGenerator as DB
 
-
-def Associate(nodes, ways):
-    wayIDs = ParseWaysData(ways)
+def Associate(nodes):
+    conn = DB.GetConnection()
+    c=conn.cursor()
     for n in nodes:
-        if n.street in wayIDs:
-            print (n.street)
+        data = DB.SelectWayByStreet(n.street)
+        DB.InsertIntoAssociatedNodes(data[0],n)
 
+    qry="SELECT * FROM TBL_ASSOCIATED_NODES;"
+    c.execute(qry)
+    data=c.fetchall()
+    for d in data:
+        print(d[0],d[1])
