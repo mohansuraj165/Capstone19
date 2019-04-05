@@ -1,5 +1,10 @@
 import sqlite3
 from sqlite3 import Error
+import pickle
+
+sqlite3.register_converter("pickle", pickle.loads)
+sqlite3.register_adapter(list, pickle.dumps)
+sqlite3.register_adapter(set, pickle.dumps)
 
 conn = None
 db_file = "TempDB.db"
@@ -47,20 +52,20 @@ def CreateAssociatedNodesTable():
     global comm
     qry = "CREATE TABLE IF NOT EXISTS TBL_ASSOCIATED_NODES " \
           "(WayID TEXT NOT NULL," \
-          "Node TEXT NOT NULL);"
+          "Node pickle NOT NULL);"
     try:
         conn.execute(qry)
         print('Associated nodes created')
     except Error as e:
         print(e)
 
-def SelectWayByStreet(street):
+def SelectWayByStreetName(street):
     global conn
     c = conn.cursor()
     qry="SELECT * FROM TBL_WAYS WHERE Street like '%s';"%street
     try:
         c.execute(qry)
-        return c.fetchone()
+        return c.fetchall()
     except Error as e:
         print(e)
 
@@ -68,9 +73,9 @@ def InsertIntoAssociatedNodes(wayId,node):
     global conn
     c = conn.cursor()
     qry = "INSERT INTO TBL_ASSOCIATED_NODES (WayID,Node)" \
-          "VALUES ('%s','%s')"%(wayId,node)
+          "VALUES (?,?)"
     try:
-        c.execute(qry)
+        c.execute(qry,(wayId,node))
     except Error as e:
         print(e)
 

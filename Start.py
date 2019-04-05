@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: iso-8859-15 -*-
 import csv
 import xml.etree.cElementTree as ET
 import xml.dom.minidom
@@ -8,6 +10,11 @@ import OSMPythonToolsHandler as OSM
 import AssociateNodesAndWays as ANW
 import DB_eOSMGenerator as DB
 
+'''
+Store each node data received from OpenAddresses
+OpenAddresses data is in CSV.
+It is parsed to object.
+'''
 class Node():
     ###############################
     #Get rid of unused variables
@@ -27,6 +34,10 @@ class Node():
     }
     hash = ""
 
+'''
+Holds the coordinated within which OSM data has to be fetched
+Values are calculated from OpenAddresses CSV
+'''
 class Coordinates():
     latMin = 90
     latMax = -90
@@ -39,7 +50,9 @@ def GetFilenameFromPath(path):
     fn = fn[:fn.index('.csv')]
     return(fn)
 
-
+'''
+Calculates the min/max latitude and longitude required for OSM data fetch
+'''
 def ResetBox(box, lon, lat):
     if lat<(box.latMin):
         box.latMin=lat
@@ -50,14 +63,18 @@ def ResetBox(box, lon, lat):
     if lon>box.lonMax:
         box.lonMax=lon
 
+'''
+OpenAddresses data is in CSV format.
+Converts CSV data to Node objects
 
+'''
 def GetNodesFromCsv(path):
     global xml
     nodes = []
     box = Coordinates()
-    with open(path, 'rt') as csvfile:
+    with open(path, encoding="utf8") as csvfile:
         csvData = csv.reader(csvfile)
-        next(csvData, None)  # Skips headers
+        next(csvData, None)  # Skips headers for each file
 
         for row in csvData:
             nodeObj = AssignRowToObject(row)
@@ -65,7 +82,7 @@ def GetNodesFromCsv(path):
                 'addr:street'] and nodeObj.id:
                 nodes.append(nodeObj)
                 ResetBox(box,float(nodeObj.longitude),float(nodeObj.latitude))
-        nodes.append(box)
+        nodes.append(box)   #appends the coordinates object to nodes list
         return nodes
 
 
@@ -81,7 +98,9 @@ def GetNodesFromCsv(path):
     #xml.write("%s.xml" % opfn)
     '''
 
-
+'''
+Assigns each row of the CSV file to the Node object
+'''
 def AssignRowToObject(row):
     nodeObj = Node()
     nodeObj.longitude = (row[0])
@@ -102,17 +121,22 @@ def AssignRowToObject(row):
 def Main():
     DB.CreateDBConnection()
     nodes=[]
-    #path="S:/Course work/Spring 19/Garmin/openaddr-collected-north_america-sa/jm"
+    #path="S:/Course work/Spring 19/Garmin/Alpharetta GA/us/ga"
     path="S:/data/"
     for path in glob.glob(os.path.join(path, '*.csv')):
         '''Gets nodes data from Open Address'''
         nodes=GetNodesFromCsv(path)
+        print(path)
 
-    '''Gets ways data from OSM based on Lat/Lon values from nodes'''
-    OSM.GetWaysData(nodes[-1])
-    del nodes[-1]
-    '''Compare ways and nodes data and associate nodes with ways'''
-    ANW.Associate(nodes)
+    '''
+    Gets ways data from OSM based on Lat/Lon values calculated from nodes
+    Stores the data in DB
+    '''
+    OSM.GetOSMWaysData(nodes[-1])
+    del nodes[-1]   #Remove coordinates object as we do not need it anymore
+
+    '''Compare ways and nodes data and matches nodes with ways'''
+    ANW.MatchNodesWithOSMWays(nodes)
 
 
 if __name__== "__main__":
