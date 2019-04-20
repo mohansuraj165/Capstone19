@@ -1,14 +1,14 @@
 #!/usr/bin/python
 # -*- coding: iso-8859-15 -*-
 import csv
-import xml.etree.cElementTree as ET
-import xml.dom.minidom
-import time
 import glob
 import os
 import OSMPythonToolsHandler as OSM
 import AssociateNodesAndWays as ANW
 import DB_eOSMGenerator as DB
+import Logger as Log
+import XMLHandler as XML
+import time
 
 '''
 Store each node data received from OpenAddresses
@@ -16,9 +16,6 @@ OpenAddresses data is in CSV.
 It is parsed to object.
 '''
 class Node():
-    ###############################
-    #Get rid of unused variables
-    ###############################
     longitude = ""
     latitude = ""
     id = ""
@@ -32,7 +29,6 @@ class Node():
         "addr:postcode" : ""
 
     }
-    hash = ""
 
 '''
 Holds the coordinated within which OSM data has to be fetched
@@ -66,78 +62,83 @@ def ResetBox(box, lon, lat):
 '''
 OpenAddresses data is in CSV format.
 Converts CSV data to Node objects
-
 '''
 def GetNodesFromCsv(path):
     global xml
     nodes = []
     box = Coordinates()
-    with open(path, encoding="utf8") as csvfile:
-        csvData = csv.reader(csvfile)
-        next(csvData, None)  # Skips headers for each file
+    try:
+        with open(path, encoding="utf8") as csvfile:
+            csvData = csv.reader(csvfile)
+            next(csvData, None)  # Skips headers for each file
 
-        for row in csvData:
-            nodeObj = AssignRowToObject(row)
-            if nodeObj.longitude and nodeObj.latitude and nodeObj.data['addr:housenumber'] and nodeObj.data[
-                'addr:street'] and nodeObj.id:
-                nodes.append(nodeObj)
-                ResetBox(box,float(nodeObj.longitude),float(nodeObj.latitude))
-        nodes.append(box)   #appends the coordinates object to nodes list
-        return nodes
+            for row in csvData:
 
+                nodeObj = AssignRowToObject(row)
+                if nodeObj.longitude and nodeObj.latitude and nodeObj.number and nodeObj.street:
+                    nodes.append(nodeObj)
+                    ResetBox(box,float(nodeObj.longitude),float(nodeObj.latitude))
+            nodes.append(box)   #appends the coordinates object to nodes list
 
-'''
-                node = ET.SubElement(root, "node", id=nodeObj.id, version="1", lat=nodeObj.latitude, lon=nodeObj.longitude,
-                                     t="enhancedOSM")
-                for key, val in nodeObj.data.items():
-                    if val:
-                        ET.SubElement(node, "tag", k=key, v=val)
+            return nodes
+    except Exception as e:
+        Log.logging.error("In Start.py, GetNodesFromCsv()", exc_info=True)
 
-            xml = ET.ElementTree(root)
-    opfn = fn + str(int(time.time()))
-    #xml.write("%s.xml" % opfn)
-    '''
 
 '''
 Assigns each row of the CSV file to the Node object
 '''
 def AssignRowToObject(row):
     nodeObj = Node()
-    nodeObj.longitude = (row[0])
-    nodeObj.latitude = (row[1])
-    nodeObj.number = row[2]
-    nodeObj.street = row[3]
-    nodeObj.data['addr:housenumber'] = str(row[2])
-    nodeObj.data['addr:street'] = (row[3])
-    nodeObj.data['addr:unit'] = row[4]
-    nodeObj.data['addr:city'] = row[5]
-    nodeObj.data['addr:district'] = row[6]
-    nodeObj.data['addr:reqion'] = row[7]
-    nodeObj.data['addr:postcode'] = row[8]
-    nodeObj.id = row[9]
-    nodeObj.hash = row[10]
+    try:
+
+        nodeObj.longitude = (row[0])
+        nodeObj.latitude = (row[1])
+        nodeObj.number = row[2]
+        nodeObj.street = row[3]
+        nodeObj.streetPhoneticCode = OSM.GetPhoneticCode(nodeObj.street)
+        nodeObj.data['addr:housenumber'] = str(row[2])
+        nodeObj.data['addr:street'] = (row[3])
+        nodeObj.data['addr:unit'] = row[4]
+        nodeObj.data['addr:city'] = row[5]
+        nodeObj.data['addr:district'] = row[6]
+        nodeObj.data['addr:reqion'] = row[7]
+        nodeObj.data['addr:postcode'] = row[8]
+        nodeObj.id = row[9]
+        nodeObj.hash = row[10]
+    except IndexError as e:
+        Log.logging.error("In file Start.py, AssignRowToObject()", exc_info=True)
+
     return nodeObj
 
-def Main():
+
+def Main(path):
     DB.CreateDBConnection()
     nodes=[]
-    #path="S:/Course work/Spring 19/Garmin/Alpharetta GA/us/ga"
-    path="S:/data/"
-    for path in glob.glob(os.path.join(path, '*.csv')):
-        '''Gets nodes data from Open Address'''
-        nodes=GetNodesFromCsv(path)
-        print(path)
+    xml=""
 
-    '''
-    Gets ways data from OSM based on Lat/Lon values calculated from nodes
-    Stores the data in DB
-    '''
-    OSM.GetOSMWaysData(nodes[-1])
-    del nodes[-1]   #Remove coordinates object as we do not need it anymore
+    try:
+        for path in glob.glob(os.path.join(path, '*.csv')):
+            '''Gets nodes data from Open Address'''
+            nodes=GetNodesFromCsv(path)
+            '''
+            Gets ways data from OSM based on Lat/Lon values calculated from nodes
+            Stores the data in DB
+            '''
+            if (OSM.GetOSMWaysData(nodes[-1])):
+                del nodes[-1]   #Remove coordinates object as we do not need it anymore
 
-    '''Compare ways and nodes data and matches nodes with ways'''
-    ANW.MatchNodesWithOSMWays(nodes)
+                '''Compare ways and nodes data and matches nodes with ways'''
+                start_time = time.time()
+                ANW.MatchNodesWithOSMWays(nodes)
+                print("--- %s seconds ---" % (time.time() - start_time))
+    except Exception as e:
+        Log.logging.error("In file Start.py, Main()", exc_info=True)
 
+
+    print("done")
+    XML.WriteToXML()
 
 if __name__== "__main__":
-  Main()
+    path="S:/data/"
+    Main(path)
