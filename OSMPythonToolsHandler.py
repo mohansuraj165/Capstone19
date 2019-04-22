@@ -2,7 +2,7 @@ from OSMPythonTools.overpass import overpassQueryBuilder
 from OSMPythonTools.overpass import Overpass
 from OSMPythonTools.api import Api
 api = Api()
-import DB_eOSMGenerator as DB
+import DBScript as DB
 import Logger as Log
 import jeIlyfish
 
@@ -13,7 +13,7 @@ def GetOSMWaysData(box):
     overpass = Overpass()
     query = overpassQueryBuilder(bbox=[box.latMin,box.lonMin,box.latMax,box.lonMax], elementType='way', out='body')
     try:
-        ways = overpass.query(query, timeout=60)
+        ways = overpass.query(query)
     except:
         Log.logging.error("In OSMPythonToolsHandler.py, GetOSMWaysData", exc_info=True)
         return False
@@ -23,6 +23,7 @@ def GetOSMWaysData(box):
         box.lonMax+=0.5
         box.latMax+=0.5
         GetOSMWaysData(box)
+        print('reset')
     else:
         StoreWaysData (ways._json['elements'])
     return True
@@ -41,7 +42,7 @@ def GetOSMNode(nodeID):
     n = OSMNodesCache.get(nodeID)
     if n==None:
         n = api.query('node/%s'%nodeID)
-        OSMNodesCache[nodeID]=n
+        #OSMNodesCache[nodeID]=n
     return n
 
 

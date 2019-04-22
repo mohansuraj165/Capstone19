@@ -24,7 +24,7 @@ def Start():
 
 #Creating new window
 root=Tk()
-root.title("EOSM-Generator")
+root.title("OSM-OA Importer")
 root.geometry("500x400")
 
 app=Frame(root)

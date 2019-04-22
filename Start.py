@@ -5,7 +5,7 @@ import glob
 import os
 import OSMPythonToolsHandler as OSM
 import AssociateNodesAndWays as ANW
-import DB_eOSMGenerator as DB
+import DBScript as DB
 import Logger as Log
 import XMLHandler as XML
 import time
@@ -129,9 +129,7 @@ def Main(path):
                 del nodes[-1]   #Remove coordinates object as we do not need it anymore
 
                 '''Compare ways and nodes data and matches nodes with ways'''
-                start_time = time.time()
                 ANW.MatchNodesWithOSMWays(nodes)
-                print("--- %s seconds ---" % (time.time() - start_time))
     except Exception as e:
         Log.logging.error("In file Start.py, Main()", exc_info=True)
 
@@ -140,5 +138,5 @@ def Main(path):
     XML.WriteToXML()
 
 if __name__== "__main__":
-    path="S:/data/"
+    path="S:/data/SA"
     Main(path)

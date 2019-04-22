@@ -8,7 +8,7 @@ sqlite3.register_adapter(list, pickle.dumps)
 sqlite3.register_adapter(set, pickle.dumps)
 
 conn = None
-db_file = "TempDB.db"
+db_file = "OSM-OAImporterDB.db"
 
 """ 
 create a database connection to a SQLite database 
@@ -23,7 +23,7 @@ def CreateDBConnection():
         CreateAssociatedNodesTable()
     except Error as e:
         print(e)
-        Log.logging.error("In DB_eOSMGenerator.py, CreateDBConnection()", exc_info=True)
+        Log.logging.error("In DBScript.py, CreateDBConnection()", exc_info=True)
 
 """ 
 opens a database connection 
@@ -36,7 +36,7 @@ def OpenConnection():
         return conn
     except Error as e:
         print(e)
-        Log.logging.error("In DB_eOSMGenerator.py, OpenConnection()", exc_info=True)
+        Log.logging.error("In DBScript.py, OpenConnection()", exc_info=True)
 
 '''
 Retrives current DB connection
@@ -70,7 +70,7 @@ def CreateWaysTable():
         print('Ways table created')
     except Error as e:
         print(e)
-        Log.logging.error("In DB_eOSMGenerator.py, CreateWaysTable()", exc_info=True)
+        Log.logging.error("In DBScript.py, CreateWaysTable()", exc_info=True)
 
 '''
 Table to store OpenAddresses node with its matched way
@@ -87,7 +87,7 @@ def CreateAssociatedNodesTable():
         print('Associated nodes created')
     except Error as e:
         print(e)
-        Log.logging.error("In DB_eOSMGenerator.py, CreateAssociatedNodesTable()", exc_info=True)
+        Log.logging.error("In DBScript.py, CreateAssociatedNodesTable()", exc_info=True)
 
 '''
 Query to retrieve data by matching street name from TBL_WAYS
@@ -101,7 +101,7 @@ def SelectWayByStreetName(code):
         return c.fetchall()
     except Error as e:
         print(e)
-        Log.logging.error("In DB_eOSMGenerator.py, SelectWayByStreetName()", exc_info=True)
+        Log.logging.error("In DBScript.py, SelectWayByStreetName()", exc_info=True)
 
 '''
 Query to insert into TBL_ASSOCIATED_NODES
@@ -115,7 +115,7 @@ def InsertIntoAssociatedNodes(wayId,node):
         c.execute(qry,(wayId,node))
     except Error as e:
         print(e)
-        Log.logging.error("In DB_eOSMGenerator.py, InsertIntoAssociatedNodes()", exc_info=True)
+        Log.logging.error("In DBScript.py, InsertIntoAssociatedNodes()", exc_info=True)
 
 '''
 Query to insert into TBL_WAYS
@@ -129,7 +129,7 @@ def InsertIntoWays(wayID,nodeIDs,street,code):
         conn.execute(qry)
     except Error as e:
         print(e)
-        Log.logging.error("In DB_eOSMGenerator.py, InsertIntoWays()", exc_info=True)
+        Log.logging.error("In DBScript.py, InsertIntoWays()", exc_info=True)
 
 def SelectDistinctWayID():
     global conn
@@ -139,7 +139,7 @@ def SelectDistinctWayID():
         return c.fetchall()
     except Error as e:
         print(e)
-        Log.logging.error("In DB_eOSMGenerator.py, SelectDistinctWayID()", exc_info=True)
+        Log.logging.error("In DBScript.py, SelectDistinctWayID()", exc_info=True)
 
 def SelectAllAssociatedNodesByWayID(way):
     global conn
@@ -150,4 +150,4 @@ def SelectAllAssociatedNodesByWayID(way):
         return c.fetchall()
     except Error as e:
         print(e)
-        Log.logging.error("In DB_eOSMGenerator.py, SelectAllAssociatedNodesByWayID()", exc_info=True)
+        Log.logging.error("In DBScript.py, SelectAllAssociatedNodesByWayID()", exc_info=True)

@@ -1,4 +1,4 @@
-import DB_eOSMGenerator as DB
+import DBScript as DB
 import pickle
 import xml.etree.cElementTree as ET
 import OSMPythonToolsHandler as OSM
@@ -17,7 +17,6 @@ def MatchNodesWithOSMWays(nodes):
     for n in nodes:
         data = DB.SelectWayByStreetName(n.streetPhoneticCode)
         try:
-
             if len(data)==0:
                 continue
             if len(data)==1:
@@ -63,7 +62,6 @@ def FindBestWay(waysList,node):
 Calculates average diatance from a given node to all nodes in a way
 '''
 def GetAvgDist(way,node):
-
     s=str(way[1])
     s=s.replace("]"," ")
     s=s.replace("["," ")
@@ -92,5 +90,8 @@ def calcHarversineDist(lat1,lon1,lat2,lon2):
     d = R * c
     return d
 
+'''
+Calculates distance between 2 coordinates using PythagoreanDistanceFormula
+'''
 def calcPythagoreanDist(lat1,lon1,lat2,lon2):
     return math.pow((lat2-lat1),2)+math.pow((lon2-lon1),2)
