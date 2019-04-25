@@ -1,0 +1,168 @@
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;
+ERROR:root:In OSMPythonToolsHandler.py, GetOSMWaysData
+Traceback (most recent call last):
+  File "S:\Projects\eOSMGenerator\OSMPythonToolsHandler.py", line 16, in GetOSMWaysData
+    ways = overpass.query(query)
+  File "C:\Users\Suraj\PycharmProjects\eOSMGenerator\venv\lib\site-packages\OSMPythonTools\internal\cacheObject.py", line 40, in query
+    raise(Exception('[' + self._prefix + '] error in result (' + filename + '): ' + queryString))
+Exception: [overpass] error in result (cache/overpass-3c1560cedaee1873a4a687caf1270cab58945369): [timeout:25][out:json];(way(-8.1159995,-34.9277648,-8.010417,-34.8862189);); out body;

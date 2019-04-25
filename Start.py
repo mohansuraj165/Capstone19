@@ -115,7 +115,6 @@ def AssignRowToObject(row):
 def Main(path):
     DB.CreateDBConnection()
     nodes=[]
-    xml=""
 
     try:
         for path in glob.glob(os.path.join(path, '*.csv')):
@@ -138,5 +137,5 @@ def Main(path):
     XML.WriteToXML()
 
 if __name__== "__main__":
-    path="S:/data/SA"
+    path="S:/data/Europe"
     Main(path)

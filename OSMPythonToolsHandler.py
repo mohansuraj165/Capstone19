@@ -23,7 +23,6 @@ def GetOSMWaysData(box):
         box.lonMax+=0.5
         box.latMax+=0.5
         GetOSMWaysData(box)
-        print('reset')
     else:
         StoreWaysData (ways._json['elements'])
     return True
@@ -42,7 +41,7 @@ def GetOSMNode(nodeID):
     n = OSMNodesCache.get(nodeID)
     if n==None:
         n = api.query('node/%s'%nodeID)
-        #OSMNodesCache[nodeID]=n
+        OSMNodesCache[nodeID]=n
     return n
 
 

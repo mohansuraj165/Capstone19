@@ -8,6 +8,11 @@ import XMLHandler as XML
 
 fact = 100000000.00
 
+#Used in FindBestWay().
+#2 implies every 2nd node is used in distance calculation
+#3 implies every 3rd node is used in distance calculation
+step = 2
+
 '''
 Matches nodes with ways data retrieved from OSM
 Compares street name from nodes and matches to the best way ID
@@ -51,10 +56,10 @@ Finds the nearest way for a given node
 def FindBestWay(waysList,node):
     dist = float("inf")
     id = 0
-    for way in waysList:
-        d=GetAvgDist(way,node)
+    for i in range(0,len(waysList),step):
+        d=GetAvgDist(waysList[i],node)
         if(d<dist):
-            id=way[0]
+            id=waysList[i][0]
             dist=d
     return (id)
 
