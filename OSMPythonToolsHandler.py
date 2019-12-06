@@ -4,7 +4,7 @@ from OSMPythonTools.api import Api
 api = Api()
 import DBScript as DB
 import Logger as Log
-import jeIlyfish
+import jellyfish
 
 OSMNodesCache={}
 
@@ -46,7 +46,7 @@ def GetOSMNode(nodeID):
 
 
 def GetPhoneticCode(street):
-    code = jeIlyfish.metaphone(street)
+    code = jellyfish.metaphone(street)
     code.rsplit(' ', 1)[0]
     return code
 
